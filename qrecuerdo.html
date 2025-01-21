@@ -3,154 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRECUERDO - Preservando Memorias Eternas</title>
-    <link rel="stylesheet" href="qrecuerdo.css">
+    <title>QRECUERDO - Memorias Eternas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4A3933;
+            --secondary: #8B7355;
+            --accent: #C4A484;
+            --gold: #FFD700;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .discount-banner {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            animation: glow 2s infinite;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes glow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('/api/placeholder/1920/1080');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 60px;
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: #25D366;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .video-section {
+            padding: 80px 20px;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 40px auto;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 20px;
+            color: var(--primary);
+        }
+
+        .photo-section {
+            padding: 80px 20px;
+            background: var(--secondary);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 40px auto;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: var(--white);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .products-section {
+            padding: 80px 20px;
+            background: var(--accent);
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--white);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 3rem;
+            }
+            .header p {
+                font-size: 1.4rem;
+            }
+            .video-grid, .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="promotion-banner">
-        <i class="fas fa-gift"></i>
-        <span>¡15% de descuento hasta el 31 de Enero!</span>
+    <div class="discount-banner">
+        <i class="fas fa-star"></i>
+        ¡15% DE DESCUENTO HASTA EL 31 DE ENERO!
+        <i class="fas fa-star"></i>
     </div>
 
-    <header class="main-header">
-        <div class="header-content">
-            <h1>QRECUERDO</h1>
-            <p>Memorias que perduran en el tiempo</p>
-        </div>
+    <header class="header">
+        <h1>QRECUERDO</h1>
+        <p>Preservando Memorias Eternas</p>
+        <p>"Porque cada historia merece ser recordada"</p>
+        <a href="https://wa.me/59172645173?text=QUIERO%20MI%20PLAQUITA%20CON%20EL%2015%25DESCUENTO" class="cta-button">
+            <i class="fab fa-whatsapp"></i> QUIERO MI PLAQUITA CON 15% DE DESCUENTO
+        </a>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h2>Honrando Memorias con Tecnología</h2>
-            <p>Una placa única que conecta recuerdos eternos a través de un código QR</p>
-            <a href="https://wa.me/59172645173?text=QUIERO%20MI%20PLAQUITA%20CON%20EL%2015%25DESCUENTO" class="cta-button">
-                <i class="fab fa-whatsapp"></i> QUIERO MI PLAQUITA CON 15% DE DESCUENTO
-            </a>
-        </div>
-    </section>
-
-    <section class="video-gallery">
-        <h2>Momentos que Perduran</h2>
-        <p class="section-description">Cada video cuenta una historia de amor y recuerdo</p>
+    <section class="video-section">
+        <h2 class="section-title">Momentos que Perduran</h2>
+        <p class="section-description">Cada video es un tesoro de recuerdos inolvidables</p>
         <div class="video-grid">
-            <div class="video-item">
-                <video controls>
+            <div class="video-card">
+                <video controls poster="/api/placeholder/400/300">
                     <source src="video1.mp4" type="video/mp4">
                 </video>
-                <p>Un legado de amor</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="video2.mp4" type="video/mp4">
-                </video>
-                <p>Momentos inolvidables</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="video3.mp4" type="video/mp4">
-                </video>
-                <p>Recuerdos eternos</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="video4.mp4" type="video/mp4">
-                </video>
-                <p>Historias que inspirar</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="products">
-        <h2>Nuestras Placas Conmemorativas</h2>
-        <div class="product-container">
-            <div class="product-card">
-                <img src="bronce.jpg" alt="Placa de Bronce">
-                <h3>Placa de Bronce</h3>
-                <p class="price">180 Bs.</p>
-                <p>Elegancia y durabilidad en cada detalle</p>
-            </div>
-            <div class="product-card">
-                <img src="acero.jpg" alt="Placa de Acero Inoxidable">
-                <h3>Placa de Acero Inoxidable</h3>
-                <p class="price">130 Bs.</p>
-                <p>Resistencia y belleza que perdura</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="photo-gallery">
-        <h2>Galería de Recuerdos</h2>
-        <p class="section-description">Cada imagen cuenta una historia de amor eterno</p>
-        <div class="photo-grid">
-            <div class="photo-item">
-                <img src="foto1.jpeg" alt="Recuerdo 1">
-                <div class="photo-overlay">
-                    <p>"El amor nunca muere, solo se transforma"</p>
+                <div class="video-info">
+                    <h3>Momentos de Alegría</h3>
+                    <p>Recuerdos que vivirán por siempre</p>
                 </div>
             </div>
-            <div class="photo-item">
-                <img src="foto2.jpeg" alt="Recuerdo 2">
+            <div class="video-card">
+                <video controls poster="/api/placeholder/400/300">
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Historias de Amor</h3>
+                    <p>El amor trasciende el tiempo</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video controls poster="/api/placeholder/400/300">
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Legado Familiar</h3>
+                    <p>Tradiciones que perduran</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video controls poster="/api/placeholder/400/300">
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Memorias Especiales</h3>
+                    <p>Momentos que inspiran</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2 class="section-title" style="color: var(--primary);">Nuestras Placas Conmemorativas</h2>
+        <p class="section-description" style="color: var(--primary);">Elegancia y tecnología unidas para honrar memorias</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="/api/placeholder/300/200" alt="Placa de Bronce">
+                <h3>Placa de Bronce</h3>
+                <div class="price">180 Bs.</div>
+                <p>Elegancia eterna en cada detalle</p>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/300/200" alt="Placa de Acero Inoxidable">
+                <h3>Placa de Acero Inoxidable</h3>
+                <div class="price">130 Bs.</div>
+                <p>Resistencia y belleza duradera</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-section">
+        <h2 class="section-title">Galería de Recuerdos</h2>
+        <p class="section-description">Cada imagen cuenta una historia de amor eterno</p>
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img src="/api/placeholder/400/400" alt="Recuerdo 1">
+                <div class="photo-overlay">
+                    <p>"El amor verdadero vive para siempre"</p>
+                </div>
+            </div>
+            <div class="photo-card">
+                <img src="/api/placeholder/400/400" alt="Recuerdo 2">
                 <div class="photo-overlay">
                     <p>"Los recuerdos son el tesoro más valioso"</p>
                 </div>
             </div>
-            <div class="photo-item">
-                <img src="foto3.jpeg" alt="Recuerdo 3">
+            <div class="photo-card">
+                <img src="/api/placeholder/400/400" alt="Recuerdo 3">
                 <div class="photo-overlay">
                     <p>"Siempre en nuestros corazones"</p>
                 </div>
             </div>
-            <div class="photo-item">
-                <img src="foto4.jpeg" alt="Recuerdo 4">
+            <div class="photo-card">
+                <img src="/api/placeholder/400/400" alt="Recuerdo 4">
                 <div class="photo-overlay">
-                    <p>"Un legado de amor eterno"</p>
+                    <p>"Una vida llena de amor"</p>
                 </div>
             </div>
-            <div class="photo-item">
-                <img src="foto5.jpg" alt="Recuerdo 5">
+            <div class="photo-card">
+                <img src="/api/placeholder/400/400" alt="Recuerdo 5">
                 <div class="photo-overlay">
-                    <p>"Memorias que inspiran"</p>
+                    <p>"Memorias que inspiran eternamente"</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <h2>¿Por qué elegir QRECUERDO?</h2>
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-qrcode"></i>
-                <h3>Tecnología QR</h3>
-                <p>Acceso instantáneo a memorias digitales</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-heart"></i>
-                <h3>Hecho con Amor</h3>
-                <p>Cada placa es única como tu ser querido</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-truck"></i>
-                <h3>Envíos Nacionales</h3>
-                <p>Llegamos a toda Bolivia</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>QRECUERDO</h3>
-                <p>Preservando memorias con amor</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contáctanos</h3>
-                <p><i class="fab fa-whatsapp"></i> +591 72645173</p>
-                <p><i class="fas fa-map-marker-alt"></i> Servicio en toda Bolivia</p>
-            </div>
-        </div>
+        <h3>QRECUERDO</h3>
+        <p>Preservando memorias con amor en toda Bolivia</p>
+        <p><i class="fab fa-whatsapp"></i> +591 72645173</p>
     </footer>
 
-    <script src="qrecuerdo.script.js"></script>
+    <script>
+        // Animación suave al scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto parallax en el header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const offset = window.pageYOffset;
+            header.style.backgroundPositionY = offset * 0.7 + 'px';
+        });
+
+        // Animación de entrada para elementos
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Aplicar animaciones a elementos
+        document.querySelectorAll('.video-card, .photo-card, .product-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
