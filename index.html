@@ -5,129 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QRECUERDO - Memorias Eternas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Asegúrate de que el archivo CSS esté en la misma carpeta -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Banner de Descuento -->
+    <!-- Banner de Descuento Fijo -->
     <div class="discount-banner">
-        <div class="discount-content">
-            <i class="fas fa-heart pulse"></i>
-            <span>15% DE DESCUENTO HASTA EL 31 DE ENERO</span>
-            <i class="fas fa-heart pulse"></i>
-        </div>
+        <i class="fas fa-heart"></i>
+        <span>15% DE DESCUENTO HASTA EL 31 DE ENERO</span>
+        <i class="fas fa-heart"></i>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Sección Principal -->
     <header class="hero">
         <div class="hero-content">
-            <h1 class="main-title">QRECUERDO</h1>
-            <p class="hero-subtitle">Preservando Memorias Eternas</p>
-            <p class="hero-quote">"Porque cada historia merece ser recordada"</p>
+            <h1>QRECUERDO</h1>
+            <p class="subtitle">Preservando Memorias Eternas</p>
+            <p class="quote">"Porque cada historia merece ser recordada"</p>
             <a href="https://wa.me/59172645173?text=QUIERO%20MI%20PLAQUITA%20CON%20EL%2015%25DESCUENTO" 
                class="cta-button">
-                <i class="fab fa-whatsapp"></i> 
-                QUIERO MI PLAQUITA CON 15% DE DESCUENTO
+                <i class="fab fa-whatsapp"></i> QUIERO MI PLAQUITA CON 15% DE DESCUENTO
             </a>
         </div>
     </header>
 
     <!-- Sección de Videos -->
-    <section class="video-section" id="memorias">
-        <div class="section-header">
-            <h2>Memorias en Movimiento</h2>
-            <p>Cada video cuenta una historia de amor eterno</p>
-        </div>
+    <section class="video-section">
+        <h2>Momentos que Perduran</h2>
+        <p class="section-description">Cada video cuenta una historia de amor eterno</p>
         <div class="video-grid">
-            <div class="video-card" data-aos="fade-up">
-                <video controls poster="images/video-thumb1.jpg">
-                    <source src="videos/video1.mp4" type="video/mp4">
+            <div class="video-card">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
                 </video>
                 <div class="video-info">
-                    <h3>Momentos de Amor</h3>
-                    <p>"El amor trasciende el tiempo"</p>
+                    <h3>Momentos de Alegría</h3>
+                    <p>Recuerdos que vivirán por siempre</p>
                 </div>
             </div>
-            <!-- Repetir para los otros 3 videos -->
+            <div class="video-card">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Historias de Amor</h3>
+                    <p>El amor trasciende el tiempo</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video controls>
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Memorias Familiares</h3>
+                    <p>Unidos por siempre</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video controls>
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h3>Historias Eternas</h3>
+                    <p>Amor que perdura</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Sección de Productos -->
-    <section class="products-section" id="productos">
-        <div class="section-header">
-            <h2>Nuestras Placas Conmemorativas</h2>
-            <p>Un tributo único para memorias eternas</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card" data-aos="fade-right">
+    <section class="products">
+        <h2>Nuestras Placas Conmemorativas</h2>
+        <div class="product-container">
+            <div class="product-card">
                 <div class="product-image">
-                    <img src="images/bronce-placa.jpg" alt="Placa de Bronce">
+                    <img src="foto3.jpeg" alt="Placa de Bronce">
                 </div>
-                <div class="product-info">
-                    <h3>Placa de Bronce</h3>
-                    <p class="price">180 Bs.</p>
-                    <p class="description">Elegancia eterna en cada detalle</p>
-                </div>
+                <h3>Placa de Bronce</h3>
+                <p class="price">180 Bs.</p>
+                <p>Elegancia eterna en cada detalle</p>
             </div>
-            <div class="product-card" data-aos="fade-left">
+            <div class="product-card">
                 <div class="product-image">
-                    <img src="images/acero-placa.jpg" alt="Placa de Acero">
+                    <img src="foto4.jpeg" alt="Placa de Acero">
                 </div>
-                <div class="product-info">
-                    <h3>Placa de Acero Inoxidable</h3>
-                    <p class="price">130 Bs.</p>
-                    <p class="description">Resistencia y belleza duradera</p>
-                </div>
+                <h3>Placa de Acero Inoxidable</h3>
+                <p class="price">130 Bs.</p>
+                <p>Resistencia y belleza duradera</p>
             </div>
         </div>
     </section>
 
     <!-- Galería de Fotos -->
-    <section class="gallery-section" id="galeria">
-        <div class="section-header">
-            <h2>Galería de Recuerdos</h2>
-            <p>Momentos eternos capturados en el tiempo</p>
-        </div>
+    <section class="photo-gallery">
+        <h2>Galería de Recuerdos</h2>
         <div class="photo-grid">
-            <div class="photo-card" data-aos="zoom-in">
-                <img src="images/photo1.jpg" alt="Recuerdo 1">
+            <div class="photo-item">
+                <img src="foto1.jpeg" alt="Recuerdo 1">
                 <div class="photo-overlay">
-                    <p>"Los recuerdos son el tesoro más valioso que guardamos en el corazón"</p>
+                    <p>"El amor verdadero vive para siempre"</p>
                 </div>
             </div>
-            <!-- Repetir para las otras 4 fotos -->
+            <div class="photo-item">
+                <img src="foto2.jpeg" alt="Recuerdo 2">
+                <div class="photo-overlay">
+                    <p>"Los recuerdos son el tesoro más valioso"</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="images/photo3.jpg" alt="Recuerdo 3">
+                <div class="photo-overlay">
+                    <p>"Siempre en nuestros corazones"</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="images/photo4.jpg" alt="Recuerdo 4">
+                <div class="photo-overlay">
+                    <p>"Una vida llena de amor"</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="images/photo5.jpg" alt="Recuerdo 5">
+                <div class="photo-overlay">
+                    <p>"Memorias que inspiran"</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer con Redes Sociales -->
-    <footer class="footer">
+    <footer>
         <div class="footer-content">
-            <div class="footer-section">
+            <div class="footer-info">
                 <h3>QRECUERDO</h3>
                 <p>Preservando memorias con amor</p>
                 <p>Envíos a toda Bolivia</p>
             </div>
-            <div class="footer-section">
-                <h3>Contáctanos</h3>
-                <a href="https://wa.me/59172645173" class="contact-link">
-                    <i class="fab fa-whatsapp"></i> +591 72645173
+            <div class="social-links">
+                <a href="https://www.instagram.com/qrecuerdo_?igsh=bWs3ZG1oMGxwbGNz" 
+                   target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
                 </a>
-            </div>
-            <div class="footer-section social-section">
-                <h3>Síguenos</h3>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/qrecuerdo_?igsh=bWs3ZG1oMGxwbGNz" 
-                       class="social-link" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@qrecuerdo_?_t=ZM-8tGAuWlGVs6&_r=1" 
-                       class="social-link" target="_blank">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
+                <a href="https://www.tiktok.com/@qrecuerdo_?_t=ZM-8tGAuWlGVs6&_r=1" 
+                   target="_blank" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/59172645173" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Asegúrate de que el archivo JS esté en la misma carpeta -->
+    <script src="script.js"></script>
 </body>
 </html>
